@@ -20,7 +20,7 @@
      /**
      * 设置应用语言
      */
-    public static void setLocalLanguage() {
+    public static void setLocalLanguage(Activity context) {
         int language = spLanguage.getInt(Constants.LANGUAGE, 0);
         switch (language) {
             case 0:
@@ -32,7 +32,7 @@
         }
         Intent intent = new Intent(x.app(), HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        x.app().startActivity(intent);
+        context.startActivity(intent);
     }
 		
    如果大家实在不懂的， 可以参考原创链接：https://blog.csdn.net/finddreams/article/details/78470768?utm_source=tuicool&utm_medium=referral
