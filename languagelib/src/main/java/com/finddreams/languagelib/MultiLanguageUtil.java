@@ -64,7 +64,7 @@ public class MultiLanguageUtil {
     }
 
     /**
-     * 如果不是英文、简体中文、繁体中文，默认返回简体中文
+     * 如果不是英文、简体中文、繁体中文、日语，默认返回简体中文
      *
      * @return
      */
@@ -79,6 +79,8 @@ public class MultiLanguageUtil {
             return Locale.SIMPLIFIED_CHINESE;
         } else if (languageType == LanguageType.LANGUAGE_CHINESE_TRADITIONAL) {
             return Locale.TRADITIONAL_CHINESE;
+        }else if (languageType == LanguageType.LANGUAGE_JAPANESE) {
+            return Locale.JAPANESE;
         }
         getSystemLanguage(getSysLocale());
         Log.e(TAG, "getLanguageLocale" + languageType + languageType);
@@ -120,6 +122,8 @@ public class MultiLanguageUtil {
             return mContext.getString(R.string.setting_simplified_chinese);
         } else if (languageType == LanguageType.LANGUAGE_CHINESE_TRADITIONAL) {
             return mContext.getString(R.string.setting_traditional_chinese);
+        }else if (languageType == LanguageType.LANGUAGE_JAPANESE) {
+            return mContext.getString(R.string.setting_japanese);
         }
         return mContext.getString(R.string.setting_language_auto);
     }
@@ -134,7 +138,9 @@ public class MultiLanguageUtil {
             return LanguageType.LANGUAGE_CHINESE_SIMPLIFIED;
         } else if (languageType == LanguageType.LANGUAGE_CHINESE_TRADITIONAL) {
             return LanguageType.LANGUAGE_CHINESE_TRADITIONAL;
-        } else if (languageType == LanguageType.LANGUAGE_FOLLOW_SYSTEM) {
+        } else if (languageType == LanguageType.LANGUAGE_JAPANESE) {
+             return LanguageType.LANGUAGE_JAPANESE;
+         }else if (languageType == LanguageType.LANGUAGE_FOLLOW_SYSTEM) {
            return LanguageType.LANGUAGE_FOLLOW_SYSTEM;
         }
         Log.e(TAG, "getLanguageType" + languageType);

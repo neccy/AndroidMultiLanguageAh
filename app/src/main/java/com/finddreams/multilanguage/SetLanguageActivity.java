@@ -18,10 +18,12 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
     private RelativeLayout rl_simplified_chinese;
     private RelativeLayout rl_traditional_chinese;
     private RelativeLayout rl_english;
+    private RelativeLayout rl_japanese;
     private ImageView iv_english;
     private ImageView iv_followsystem;
     private ImageView iv_simplified_chinese;
     private ImageView iv_traditional_chinese;
+    private ImageView iv_japanese;
     private int savedLanguageType;
 
     @Override
@@ -37,14 +39,17 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
         rl_simplified_chinese = findViewById(R.id.rl_simplified_chinese);
         rl_traditional_chinese = findViewById(R.id.rl_traditional_chinese);
         rl_english = findViewById(R.id.rl_english);
+        rl_japanese = findViewById(R.id.rl_japanese);
         iv_followsystem = findViewById(R.id.iv_followsystem);
         iv_english = findViewById(R.id.iv_english);
+        iv_japanese = findViewById(R.id.iv_japanese);
         iv_simplified_chinese = findViewById(R.id.iv_simplified_chinese);
         iv_traditional_chinese = findViewById(R.id.iv_traditional_chinese);
         rl_followsytem.setOnClickListener(this);
         rl_simplified_chinese.setOnClickListener(this);
         rl_traditional_chinese.setOnClickListener(this);
         rl_english.setOnClickListener(this);
+        rl_japanese.setOnClickListener(this);
         savedLanguageType = MultiLanguageUtil.getInstance().getLanguageType();
         if (savedLanguageType == LanguageType.LANGUAGE_FOLLOW_SYSTEM) {
             setFollowSytemVisible();
@@ -54,6 +59,8 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
             setEnglishVisible();
         } else if (savedLanguageType == LanguageType.LANGUAGE_CHINESE_SIMPLIFIED) {
             setSimplifiedVisible();
+        } else if (savedLanguageType == LanguageType.LANGUAGE_JAPANESE) {
+            setJapaneseVisible();
         } else {
             setSimplifiedVisible();
         }
@@ -71,16 +78,18 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
             case R.id.rl_simplified_chinese:
                 setSimplifiedVisible();
                 selectedLanguage = LanguageType.LANGUAGE_CHINESE_SIMPLIFIED;
-
                 break;
             case R.id.rl_traditional_chinese:
                 setTraditionalVisible();
                 selectedLanguage = LanguageType.LANGUAGE_CHINESE_TRADITIONAL;
-
                 break;
             case R.id.rl_english:
                 setEnglishVisible();
                 selectedLanguage = LanguageType.LANGUAGE_EN;
+                break;
+            case R.id.rl_japanese:
+                setJapaneseVisible();
+                selectedLanguage = LanguageType.LANGUAGE_JAPANESE;
                 break;
         }
         MultiLanguageUtil.getInstance().updateLanguage(selectedLanguage);
@@ -97,6 +106,7 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
         iv_english.setVisibility(View.GONE);
         iv_simplified_chinese.setVisibility(View.VISIBLE);
         iv_traditional_chinese.setVisibility(View.GONE);
+        iv_japanese.setVisibility(View.GONE);
     }
 
     private void setEnglishVisible() {
@@ -104,12 +114,14 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
         iv_english.setVisibility(View.VISIBLE);
         iv_simplified_chinese.setVisibility(View.GONE);
         iv_traditional_chinese.setVisibility(View.GONE);
+        iv_japanese.setVisibility(View.GONE);
     }
 
     private void setTraditionalVisible() {
         iv_followsystem.setVisibility(View.GONE);
         iv_english.setVisibility(View.GONE);
         iv_simplified_chinese.setVisibility(View.GONE);
+        iv_japanese.setVisibility(View.GONE);
         iv_traditional_chinese.setVisibility(View.VISIBLE);
     }
 
@@ -118,5 +130,14 @@ public class SetLanguageActivity extends BaseActivity implements View.OnClickLis
         iv_english.setVisibility(View.GONE);
         iv_simplified_chinese.setVisibility(View.GONE);
         iv_traditional_chinese.setVisibility(View.GONE);
+        iv_japanese.setVisibility(View.GONE);
+    }
+
+    private void setJapaneseVisible() {
+        iv_followsystem.setVisibility(View.GONE);
+        iv_english.setVisibility(View.GONE);
+        iv_simplified_chinese.setVisibility(View.GONE);
+        iv_traditional_chinese.setVisibility(View.GONE);
+        iv_japanese.setVisibility(View.VISIBLE);
     }
 }

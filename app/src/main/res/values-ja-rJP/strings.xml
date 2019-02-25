@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Android多言語</string>
+    <string name="introduction">こんにちは、私は夢を探して、私のブログの住所は：http :/ blog. csdn . net / findreams、皆さんの注目を集めてほしい！ </string>
+    <string name="open_landscape">横スクリーンを開く</string>
+    <string name="followsystem">システムに従う</string>
+    <string name="open_webview">ページを開く</string>
+    <string name="setting_language_title">多言語設定</string>
+    <string name="setting_language">多言語設定</string>
+    <string name="otheractivity">2つのページを開いて異常をテストする</string>
+    <string name="landscape">これは横スクリーンのページです</string>
+
+</resources>
